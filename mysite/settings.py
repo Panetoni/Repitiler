@@ -29,7 +29,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'based-geneva.gl.at.ply.gg',
-    '0.0.0.0'
+    '0.0.0.0',
+    '200.239.134.154'
 ]
 
 
