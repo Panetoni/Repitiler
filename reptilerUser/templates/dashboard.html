@@ -1,0 +1,70 @@
+{% if error_message %}
+  <p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+<!-- Botão de Logout -->
+<form method="post" action="{% url 'logout' %}" style="margin-bottom: 20px;">
+  {% csrf_token %}
+  <button type="submit">Logout</button>
+</form>
+
+<!-- Form para alterar nome público -->
+<form method="post">
+  {% csrf_token %}
+  {{ user_form.name_public.label_tag }} {{ user_form.name_public }}
+  <button type="submit" name="save_name_public">Salvar Nome Público</button>
+</form>
+
+<hr>
+
+<!-- Form para upload de vídeo -->
+<h2>Enviar novo vídeo</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ video_form.as_p }}
+  <button type="submit" name="upload_video">Enviar Vídeo</button>
+</form>
+
+<hr>
+
+<h2>Seus vídeos:</h2>
+<ul>
+  {% for video in videos %}
+    <li>
+      <a href="#" class="video-link" data-video-url="{{ video.video_file.url }}" data-video-title="{{ video.title }}">{{ video.title }}</a> - {{ video.uploaded_at|date:"d/m/Y H:i" }}
+    </li>
+  {% empty %}
+    <li>Nenhum vídeo enviado ainda.</li>
+  {% endfor %}
+</ul>
+
+<!-- Player fica aqui -->
+<div id="video-player-container" style="margin-top:20px; display:none;">
+  <h3 id="video-title"></h3>
+  <video id="video-player" width="640" height="360" controls>
+    <source src="" type="video/mp4">
+    Seu navegador não suporta vídeo.
+  </video>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.video-link');
+  const playerContainer = document.getElementById('video-player-container');
+  const videoPlayer = document.getElementById('video-player');
+  const videoTitle = document.getElementById('video-title');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = link.getAttribute('data-video-url');
+      const title = link.getAttribute('data-video-title');
+
+      videoPlayer.querySelector('source').src = url;
+      videoPlayer.load();
+
+      videoTitle.textContent = title;
+      playerContainer.style.display = 'block';
+      videoPlayer.play();
+    });
+  });
+</script>

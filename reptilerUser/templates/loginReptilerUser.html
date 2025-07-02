@@ -1,0 +1,33 @@
+<!-- templates/loginRepitilerUser.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+      {% load socialaccount %}
+      <h2> Google Login </h2>
+      <a href="{% provider_login_url 'google' %}?next=/dashboard">Login with Google</a>
+
+
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+</body>
+</html>
