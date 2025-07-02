@@ -6,22 +6,24 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin # type: ignore
 from django.contrib.auth.models import User # type: ignore
 from django.contrib import admin # type: ignore
 from .forms import ReptilerUserAdminForm
+from allauth.socialaccount.models import SocialAccount # type: ignore
+from .filters import SpecialUsersFilter
 
 admin.site.unregister(User)
-
+# Custom User Admin que não mostra os usuários especiais. Foi feito um filtro para ele que permite ver todos os user registrados. 
+# Isso foi feito para que o admin não fique poluído com usuários que não são administradores do sistema, como os usuários do Google e os custom users Repitiler.
 @admin.register(User)
-class CustomUserAdmin(BaseUserAdmin):
-    def changelist_view(self, request, extra_context=None):
-        # Usado apenas na página de listagem
-        self.list_filter_original = self.list_filter
-        self.list_filter = ()
-        return super().changelist_view(request, extra_context)
+class CustomUserAdmin(BaseUserAdmin): 
+    list_filter = (SpecialUsersFilter,)
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
-        # Verifica se a view atual é a de listagem (usando URL)
         if request.resolver_match and request.resolver_match.url_name == 'auth_user_changelist':
-            return qs.exclude(pk__in=ReptilerUser.objects.values_list('user_id', flat=True))
+            if request.GET.get('show_special') != 'yes':
+                reptiler_ids = ReptilerUser.objects.values_list('user_id', flat=True)
+                google_ids = SocialAccount.objects.filter(provider='google').values_list('user_id', flat=True)
+                special_ids = list(set(reptiler_ids) | set(google_ids))
+                qs = qs.exclude(pk__in=special_ids)
         return qs
 
 

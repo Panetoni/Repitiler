@@ -166,12 +166,11 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+ACCOUNT_SIGNUP_FIELDS = ['username*', 'email', 'password1*', 'password2*']
+
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 
 LOGIN_REDIRECT_URL = 'dashboard'  # Redireciona para a página inicial após o login
 ACCOUNT_LOGOUT_REDIRECT_URL = 'login'  # Redireciona para a página
-
-#ACCOUNT_ADAPTER = 'reptilerUser.adapters.NoSignupLoginAdapter'
