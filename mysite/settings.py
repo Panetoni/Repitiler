@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',           # Suporte a autenticação via contas sociais (Google, Facebook, etc.)
     'allauth.socialaccount.providers.google',  # Provedor Google para login social
     
+    'rest_framework',                # Framework RESTful para construção de APIs
+    
     # Aplicativos customizados do seu projeto
     'reptilerUser',                    # App que estende o User com dados adicionais
 ]
@@ -91,22 +93,25 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 #
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "reptiler_reptiler",
-        "USER": "reptiler_db",
-        "PASSWORD": "repDB1@3",
-        "HOST": "ohio.ufop.br",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "reptiler_reptiler",
+#         "USER": "reptiler",
+#         "PASSWORD": "EhFTYoSpHLn6",
+#         "HOST": "200.239.129.69",
+#         "PORT": "3306",
+#     }
+# }
+
+
+
 
 
 # Password validation
@@ -184,3 +189,15 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 LOGIN_REDIRECT_URL = 'dashboard'  # Redireciona para a página inicial após o login
 ACCOUNT_LOGOUT_REDIRECT_URL = 'login'  # Redireciona para a página
+
+
+
+# Rest Framework settings
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
