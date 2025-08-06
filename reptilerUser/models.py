@@ -29,17 +29,26 @@ class ReptilerUser(models.Model):
 #----------------------------------- Fim Usuário ------------------------------------------------
 
 #----------------------------------- Vídeo ---------------------------------------------------
+#from django.dispatch import receiver
+
+
+
 class Video(models.Model):
     """Modelo para armazenar vídeos."""
     
     reptiler_user = models.ForeignKey('ReptilerUser', on_delete=models.CASCADE, related_name='videos')
     """Relaciona o vídeo com um usuário do Reptiler."""
     
-    title = CharField(max_length=100)
+    title = CharField(max_length=200)
     description = CharField(max_length=500, blank=True, null=True)
     video_file = models.FileField(upload_to='videos/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
-
+    processed_video = models.FileField(upload_to='processed_videos/', blank=True, null=True)
+    signal = models.FileField(upload_to='signals/', blank=True, null=True)
+    plot = models.FileField(upload_to='plots/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
+    
+    
     def __str__(self):
         return self.title
 #----------------------------------- Fim Vídeo ---------------------------------------------------
