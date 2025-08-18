@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     'based-geneva.gl.at.ply.gg',
     '0.0.0.0',
     '200.239.134.154',
-    'reptilerecon.csilab.ufop.br:8080'
+    'reptilerecon.csilab.ufop.br'
 ]
 
 
