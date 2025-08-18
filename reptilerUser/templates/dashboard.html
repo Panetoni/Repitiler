@@ -30,41 +30,109 @@
 <h2>Seus vídeos:</h2>
 <ul>
   {% for video in videos %}
-    <li>
-      <a href="#" class="video-link" data-video-url="{{ video.video_file.url }}" data-video-title="{{ video.title }}">{{ video.title }}</a> - {{ video.uploaded_at|date:"d/m/Y H:i" }}
+    <li style="margin-bottom: 20px;">
+      <strong>{{ video.title }}</strong> - {{ video.uploaded_at|date:"d/m/Y H:i" }}
+
+      <!-- Botão para deletar vídeo -->
+      <form method="post" style="display:inline;">
+        {% csrf_token %}
+        <input type="hidden" name="video_id" value="{{ video.id }}">
+        <button type="submit" name="delete_video" onclick="return confirm('Deseja realmente deletar este vídeo?');">
+          🗑️ Deletar
+        </button>
+      </form>
+
+      <!-- Thumbnail -->
+      {% if video.thumbnail %}
+        <div>
+          <img src="{{ video.thumbnail.url }}" alt="thumb" width="160">
+        </div>
+      {% endif %}
+
+      <!-- Progresso do processamento -->
+      {% if video.progresso < 100 %}
+        <div id="progress-container-{{ video.id }}" style="margin-top:5px;">
+          <label>Progresso na extração de sinais:</label>
+          <progress id="progress-{{ video.id }}" value="{{ video.progresso }}" max="100" style="width: 480px;"></progress>
+          <span id="progress-text-{{ video.id }}">{{ video.progresso }}%</span>
+        </div>
+      {% else %}
+        <p id="done-msg-{{ video.id }}">✅ Processamento concluído</p>
+      {% endif %}
+
+      <!-- Player do vídeo original -->
+      <details>
+        <summary>Ver vídeo original</summary>
+        <video width="480" controls>
+          <source src="{{ video.video_file.url }}" type="video/mp4">
+          Seu navegador não suporta vídeo.
+        </video>
+      </details>
+
+      <!-- Player do vídeo processado -->
+      {% if video.processed_video %}
+        <details>
+          <summary>Ver vídeo processado</summary>
+          <video width="480" controls>
+            <source src="{{ video.processed_video.url }}" type="video/mp4">
+            Seu navegador não suporta vídeo.
+          </video>
+        </details>
+      {% endif %}
+
+      <!-- Plot diretamente na página -->
+      {% if video.plot_html %}
+        <div id="plot-{{ video.id }}" style="width:480px; height:300px;">
+          {{ video.plot_html|safe }}
+        </div>
+      {% endif %}
+
+      <!-- Link para baixar CSV -->
+      {% if video.signal %}
+        <p>
+          <a href="{{ video.signal.url }}" download="signal_{{ video.id }}.csv">Baixar CSV</a>
+        </p>
+      {% endif %}
     </li>
   {% empty %}
     <li>Nenhum vídeo enviado ainda.</li>
   {% endfor %}
 </ul>
 
-<!-- Player fica aqui -->
-<div id="video-player-container" style="margin-top:20px; display:none;">
-  <h3 id="video-title"></h3>
-  <video id="video-player" width="640" height="360" controls>
-    <source src="" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
-</div>
-
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
-  const links = document.querySelectorAll('.video-link');
-  const playerContainer = document.getElementById('video-player-container');
-  const videoPlayer = document.getElementById('video-player');
-  const videoTitle = document.getElementById('video-title');
+  // Atualiza progresso a cada 2 segundos via fetch
+  const intervalId = setInterval(() => {
+    let allDone = true;
 
-  links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const url = link.getAttribute('data-video-url');
-      const title = link.getAttribute('data-video-title');
+    {% for video in videos %}
+      {% if video.progresso < 100 %}
+        fetch("{% url 'video_progress' video.id %}")
+          .then(res => res.json())
+          .then(data => {
+            const progressBar = document.getElementById('progress-{{ video.id }}');
+            const progressText = document.getElementById('progress-text-{{ video.id }}');
+            const container = document.getElementById('progress-container-{{ video.id }}');
 
-      videoPlayer.querySelector('source').src = url;
-      videoPlayer.load();
+            if (progressBar && progressText) {
+              progressBar.value = data.progresso;
+              progressText.innerText = data.progresso + '%';
+            }
 
-      videoTitle.textContent = title;
-      playerContainer.style.display = 'block';
-      videoPlayer.play();
-    });
-  });
+            if (data.progresso >= 100) {
+              // remove a barra e mostra mensagem de concluído
+              if (container) {
+                container.innerHTML = '<p id="done-msg-{{ video.id }}">✅ Processamento concluído</p>';
+              }
+            } else {
+              allDone = false;
+            }
+          });
+      {% endif %}
+    {% endfor %}
+
+    if (allDone) {
+      clearInterval(intervalId); // para o polling
+    }
+  }, 2000);
 </script>

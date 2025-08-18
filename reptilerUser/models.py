@@ -3,6 +3,7 @@ from django.db.models import CharField, IntegerField #type: ignore
 from django.contrib.auth.models import User #type: ignore
 from django.db import models #type: ignore
 from django.contrib.auth.models import User #type: ignore
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 #----------------------------------- Usuário ---------------------------------------------------
@@ -48,6 +49,11 @@ class Video(models.Model):
     plot = models.FileField(upload_to='plots/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
     
+    progresso = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Progresso do processamento em porcentagem"
+    )
     
     def __str__(self):
         return self.title

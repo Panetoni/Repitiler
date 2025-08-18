@@ -345,6 +345,14 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
         "label": "static",
         "importPath": "django.conf.urls.static",
         "description": "django.conf.urls.static",
@@ -442,6 +450,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -455,6 +471,39 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.core.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "MaxValueValidator",
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "isExtraImport": true,
+        "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "MinValueValidator",
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "isExtraImport": true,
+        "detail": "django.core.validators",
         "documentation": {}
     },
     {
@@ -631,6 +680,148 @@
         "description": "django.contrib.auth.decorators",
         "isExtraImport": true,
         "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "check_output",
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "isExtraImport": true,
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "cv2,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2.",
+        "description": "cv2.",
+        "detail": "cv2.",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ExifTags",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageOps",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "django.core.files",
+        "description": "django.core.files",
+        "isExtraImport": true,
+        "detail": "django.core.files",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
         "documentation": {}
     },
     {
@@ -3551,23 +3742,6 @@
         "documentation": {}
     },
     {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "check_output",
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "isExtraImport": true,
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -4145,15 +4319,6 @@
         "documentation": {}
     },
     {
-        "label": "warnings",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "warnings",
-        "description": "warnings",
-        "detail": "warnings",
-        "documentation": {}
-    },
-    {
         "label": "zipfile",
         "kind": 6,
         "isExtraImport": true,
@@ -4236,24 +4401,6 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -4269,62 +4416,6 @@
         "importPath": "torch.nn",
         "description": "torch.nn",
         "detail": "torch.nn",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "ExifTags",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "ImageOps",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "ImageDraw",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
         "documentation": {}
     },
     {
@@ -5418,16 +5509,7 @@
         "kind": 5,
         "importPath": "mysite.settings",
         "description": "mysite.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'mysite.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\n#\n#DATABASES = {\n#    'default': {\n#        'ENGINE': 'django.db.backends.sqlite3',\n#        'NAME': BASE_DIR / 'db.sqlite3',\n#    }\n#}",
-        "detail": "mysite.settings",
-        "documentation": {}
-    },
-    {
-        "label": "#DATABASES",
-        "kind": 5,
-        "importPath": "mysite.settings",
-        "description": "mysite.settings",
-        "peekOfCode": "#DATABASES = {\n#    'default': {\n#        'ENGINE': 'django.db.backends.sqlite3',\n#        'NAME': BASE_DIR / 'db.sqlite3',\n#    }\n#}\nDATABASES = {\n     \"default\": {\n         \"ENGINE\": \"django.db.backends.mysql\",\n         \"NAME\": \"reptiler_reptiler\",",
+        "peekOfCode": "WSGI_APPLICATION = 'mysite.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n#DATABASES = {",
         "detail": "mysite.settings",
         "documentation": {}
     },
@@ -5436,7 +5518,16 @@
         "kind": 5,
         "importPath": "mysite.settings",
         "description": "mysite.settings",
-        "peekOfCode": "DATABASES = {\n     \"default\": {\n         \"ENGINE\": \"django.db.backends.mysql\",\n         \"NAME\": \"reptiler_reptiler\",\n         \"USER\": \"reptiler_db\",\n         \"PASSWORD\": \"yaulrEQFYqAp\",\n         \"HOST\": \"200.239.129.69\",\n         \"PORT\": \"3306\",\n     }\n }",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n#DATABASES = {\n#     \"default\": {\n#         \"ENGINE\": \"django.db.backends.mysql\",\n#         \"NAME\": \"reptiler_reptiler\",",
+        "detail": "mysite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "#DATABASES",
+        "kind": 5,
+        "importPath": "mysite.settings",
+        "description": "mysite.settings",
+        "peekOfCode": "#DATABASES = {\n#     \"default\": {\n#         \"ENGINE\": \"django.db.backends.mysql\",\n#         \"NAME\": \"reptiler_reptiler\",\n#         \"USER\": \"reptiler_db\",\n#         \"PASSWORD\": \"yaulrEQFYqAp\",\n#         \"HOST\": \"200.239.129.69\",\n#         \"PORT\": \"3306\",\n#     }\n# }",
         "detail": "mysite.settings",
         "documentation": {}
     },
@@ -5666,6 +5757,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "reptilerUser.migrations.0006_video_progresso",
+        "description": "reptilerUser.migrations.0006_video_progresso",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('reptilerUser', '0005_video_plot_video_processed_video_video_signal_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='video',\n            name='progresso',\n            field=models.IntegerField(default=0, help_text='Progresso do processamento em porcentagem', validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(100)]),\n        ),",
+        "detail": "reptilerUser.migrations.0006_video_progresso",
+        "documentation": {}
+    },
+    {
         "label": "CustomUserAdmin",
         "kind": 6,
         "importPath": "reptilerUser.admin",
@@ -5805,7 +5905,7 @@
         "kind": 5,
         "importPath": "reptilerUser.urls",
         "description": "reptilerUser.urls",
-        "peekOfCode": "urlpatterns = [    \n    path(\"register/\", registerReptilerUser, name='register'),  # type: ignore\n    path(\"login/\", loginReptilerUser, name='login'),  # type: ignore\n    path('dashboard/', dashboard, name='dashboard'), \n    path('', home, name='home'),  # type: ignore\n    path('logout/', logoutReptilerUser, name='logout'),  # type\n]",
+        "peekOfCode": "urlpatterns = [    \n    path(\"register/\", registerReptilerUser, name='register'),  # type: ignore\n    path(\"login/\", loginReptilerUser, name='login'),  # type: ignore\n    path('dashboard/', dashboard, name='dashboard'), \n    path('', home, name='home'),  # type: ignore\n    path('logout/', logoutReptilerUser, name='logout'),  # type\n    path('video_progress/<int:video_id>/', video_progress, name='video_progress'),\n]",
         "detail": "reptilerUser.urls",
         "documentation": {}
     },
@@ -5828,11 +5928,20 @@
         "documentation": {}
     },
     {
+        "label": "video_progress",
+        "kind": 2,
+        "importPath": "reptilerUser.views",
+        "description": "reptilerUser.views",
+        "peekOfCode": "def video_progress(request, video_id):\n    video = Video.objects.get(id=video_id, reptiler_user=request.user.reptiler_user)\n    return JsonResponse({'progresso': video.progresso})\n@login_required\ndef dashboard(request):\n    try:\n        reptiler_user = request.user.reptiler_user\n    except ReptilerUser.DoesNotExist:\n        return render(request, 'dashboard.html', {\n            'error_message': 'Usuário sem perfil registrado. Por favor, contate o administrador.'",
+        "detail": "reptilerUser.views",
+        "documentation": {}
+    },
+    {
         "label": "dashboard",
         "kind": 2,
         "importPath": "reptilerUser.views",
         "description": "reptilerUser.views",
-        "peekOfCode": "def dashboard(request):\n    try:\n        reptiler_user = request.user.reptiler_user\n    except ReptilerUser.DoesNotExist:\n        return render(request, 'dashboard.html', {\n            'error_message': 'Usuário sem perfil registrado. Por favor, contate o administrador.'\n        })\n    videos = reptiler_user.videos.all()\n    # Inicializa os forms vazios\n    user_form = ReptilerUserUpdateForm(request.POST or None, instance=reptiler_user)",
+        "peekOfCode": "def dashboard(request):\n    try:\n        reptiler_user = request.user.reptiler_user\n    except ReptilerUser.DoesNotExist:\n        return render(request, 'dashboard.html', {\n            'error_message': 'Usuário sem perfil registrado. Por favor, contate o administrador.'\n        })\n    videos = reptiler_user.videos.all()\n    # Lê o conteúdo do HTML do plot para cada vídeo\n    for video in videos:",
         "detail": "reptilerUser.views",
         "documentation": {}
     },
@@ -5841,7 +5950,7 @@
         "kind": 2,
         "importPath": "reptilerUser.views",
         "description": "reptilerUser.views",
-        "peekOfCode": "def home(request):\n    return render(request, 'home.html')\n# Logout the ReptilerUser\ndef logoutReptilerUser(request):\n    logout(request)\n    return redirect('login')  # redireciona para a página de login após logout",
+        "peekOfCode": "def home(request):\n    if request.user.is_authenticated:\n        return redirect('dashboard')\n    return redirect('login')\n# Logout the ReptilerUser\ndef logoutReptilerUser(request):\n    logout(request)\n    return redirect('login')  # redireciona para a página de login após logout",
         "detail": "reptilerUser.views",
         "documentation": {}
     },

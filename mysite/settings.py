@@ -92,23 +92,24 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-#
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+
 DATABASES = {
-     "default": {
-         "ENGINE": "django.db.backends.mysql",
-         "NAME": "reptiler_reptiler",
-         "USER": "reptiler_db",
-         "PASSWORD": "yaulrEQFYqAp",
-         "HOST": "200.239.129.69",
-         "PORT": "3306",
-     }
- }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+#DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "reptiler_reptiler",
+#         "USER": "reptiler_db",
+#         "PASSWORD": "yaulrEQFYqAp",
+#         "HOST": "200.239.129.69",
+#         "PORT": "3306",
+#     }
+# }
 
 
 
