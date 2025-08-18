@@ -16,3 +16,4 @@ media\videos\raw\
 /mysite/__pycache__
 db.sqlite3
 /.vscode
+.vscode/PythonImportHelper-v2-Completion.json

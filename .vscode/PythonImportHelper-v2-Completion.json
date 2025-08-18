@@ -5446,7 +5446,7 @@
         "kind": 5,
         "importPath": "mysite.settings",
         "description": "mysite.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-e3gq67_$!$&-$&veja6+rvx6f=g@rx%1(p_qr!5grtcy1xjr+m'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n]",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-e3gq67_$!$&-$&veja6+rvx6f=g@rx%1(p_qr!5grtcy1xjr+m'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n    'reptilerecon.csilab.ufop.br:8080'",
         "detail": "mysite.settings",
         "documentation": {}
     },
@@ -5455,7 +5455,7 @@
         "kind": 5,
         "importPath": "mysite.settings",
         "description": "mysite.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n]\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n    'reptilerecon.csilab.ufop.br:8080'\n]\n# Application definition",
         "detail": "mysite.settings",
         "documentation": {}
     },
@@ -5464,7 +5464,7 @@
         "kind": 5,
         "importPath": "mysite.settings",
         "description": "mysite.settings",
-        "peekOfCode": "ALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',             # Interface administrativa pronta do Django",
+        "peekOfCode": "ALLOWED_HOSTS = [\n    'localhost',\n    '127.0.0.1',\n    'based-geneva.gl.at.ply.gg',\n    '0.0.0.0',\n    '200.239.134.154'\n    'reptilerecon.csilab.ufop.br:8080'\n]\n# Application definition\nINSTALLED_APPS = [",
         "detail": "mysite.settings",
         "documentation": {}
     },

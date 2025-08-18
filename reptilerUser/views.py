@@ -109,7 +109,8 @@ def dashboard(request):
                 'custom',
                 path=f"{settings.BASE_DIR}/best.pt",
                 source='local',
-                device='gpu'
+                device='cpu'
+                # device='cuda' # Usar se tiver GPU disponível
             )
             model.conf = 0.25
 
