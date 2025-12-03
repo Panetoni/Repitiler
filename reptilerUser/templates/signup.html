@@ -1,20 +1,20 @@
 <!-- templates/registerRepitilerUser.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
-    <title>Register</title>
+    <title>Cadastro</title>
 </head>
 <body>
-    <h1>Create an account</h1>
+    <h1>Criar uma conta</h1>
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Register</button>
+        <button type="submit">Cadastrar</button>
     </form>
 
-    <p>Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a>.</p>
 </body>
 </html>

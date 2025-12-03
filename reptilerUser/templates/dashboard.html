@@ -1,39 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        .messages { list-style: none; padding: 0; }
+        .messages li { margin: 5px 0; padding: 5px; border-radius: 4px; }
+        .messages li.success { background-color: #d4edda; color: #155724; }
+        .messages li.error { background-color: #f8d7da; color: #721c24; }
+        button { margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<!-- Mensagens globais -->
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 {% if error_message %}
   <p style="color: red;">{{ error_message }}</p>
 {% endif %}
 
-<!-- Botão de Logout -->
+<!-- Informações do Usuário -->
+<h2>Informações do Usuário</h2>
+<p><strong>Nome:</strong> {{ reptiler_user.user.get_full_name }}</p>
+<p><strong>Email:</strong> {{ reptiler_user.user.email }}</p>
+{% if reptiler_user.user.socialaccount_set.exists %}
+  <p><strong>Login via:</strong> Google</p>
+{% else %}
+  <p><strong>Login via:</strong> Local</p>
+{% endif %}
+<hr>
+
+<!-- Logout -->
 <form method="post" action="{% url 'logout' %}" style="margin-bottom: 20px;">
   {% csrf_token %}
   <button type="submit">Logout</button>
 </form>
 
-<!-- Form para alterar nome público -->
-<form method="post">
-  {% csrf_token %}
-  {{ user_form.name_public.label_tag }} {{ user_form.name_public }}
-  <button type="submit" name="save_name_public">Salvar Nome Público</button>
-</form>
-
+<!-- Botões para ações -->
+<h2>Ações</h2>
+<div>
+    <form action="{% url 'update_name_public' %}" method="get" style="display:inline;">
+        <button type="submit">Alterar Nome Público</button>
+    </form>
+    <form action="{% url 'change_password' %}" method="get" style="display:inline;">
+        <button type="submit">Alterar Senha</button>
+    </form>
+    <form action="{% url 'upload_video' %}" method="get" style="display:inline;">
+        <button type="submit">Enviar Novo Vídeo</button>
+    </form>
+</div>
 <hr>
 
-<!-- Form para upload de vídeo -->
-<h2>Enviar novo vídeo</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ video_form.as_p }}
-  <button type="submit" name="upload_video">Enviar Vídeo</button>
-</form>
-
-<hr>
-
+<!-- Lista de vídeos -->
 <h2>Seus vídeos:</h2>
 <ul>
   {% for video in videos %}
     <li style="margin-bottom: 20px;">
       <strong>{{ video.title }}</strong> - {{ video.uploaded_at|date:"d/m/Y H:i" }}
 
-      <!-- Botão para deletar vídeo -->
+      <!-- Deletar vídeo -->
       <form method="post" style="display:inline;">
         {% csrf_token %}
         <input type="hidden" name="video_id" value="{{ video.id }}">
@@ -49,7 +81,7 @@
         </div>
       {% endif %}
 
-      <!-- Progresso do processamento -->
+      <!-- Progresso -->
       {% if video.progresso < 100 %}
         <div id="progress-container-{{ video.id }}" style="margin-top:5px;">
           <label>Progresso na extração de sinais:</label>
@@ -60,7 +92,7 @@
         <p id="done-msg-{{ video.id }}">✅ Processamento concluído</p>
       {% endif %}
 
-      <!-- Player do vídeo original -->
+      <!-- Player vídeos -->
       <details>
         <summary>Ver vídeo original</summary>
         <video width="480" controls>
@@ -69,7 +101,6 @@
         </video>
       </details>
 
-      <!-- Player do vídeo processado -->
       {% if video.processed_video %}
         <details>
           <summary>Ver vídeo processado</summary>
@@ -80,14 +111,14 @@
         </details>
       {% endif %}
 
-      <!-- Plot diretamente na página -->
+      <!-- Plot -->
       {% if video.plot_html %}
         <div id="plot-{{ video.id }}" style="width:480px; height:300px;">
           {{ video.plot_html|safe }}
         </div>
       {% endif %}
 
-      <!-- Link para baixar CSV -->
+      <!-- CSV -->
       {% if video.signal %}
         <p>
           <a href="{{ video.signal.url }}" download="signal_{{ video.id }}.csv">Baixar CSV</a>
@@ -101,7 +132,6 @@
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script>
-  // Atualiza progresso a cada 2 segundos via fetch
   const intervalId = setInterval(() => {
     let allDone = true;
 
@@ -119,11 +149,8 @@
               progressText.innerText = data.progresso + '%';
             }
 
-            if (data.progresso >= 100) {
-              // remove a barra e mostra mensagem de concluído
-              if (container) {
-                container.innerHTML = '<p id="done-msg-{{ video.id }}">✅ Processamento concluído</p>';
-              }
+            if (data.progresso >= 100 && container) {
+              container.innerHTML = '<p id="done-msg-{{ video.id }}">✅ Processamento concluído</p>';
             } else {
               allDone = false;
             }
@@ -131,8 +158,9 @@
       {% endif %}
     {% endfor %}
 
-    if (allDone) {
-      clearInterval(intervalId); // para o polling
-    }
+    if (allDone) clearInterval(intervalId);
   }, 2000);
 </script>
+
+</body>
+</html>

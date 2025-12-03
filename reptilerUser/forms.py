@@ -110,7 +110,7 @@ class ReptilerUserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = ReptilerUser
-        fields = ['user']  # Remova 'name_public' daqui!
+        fields = []  
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -129,6 +129,7 @@ class ReptilerUserUpdateForm(forms.ModelForm):
             instance.save()
         return instance
 
+
 class VideoForm(forms.ModelForm):
     """Form for uploading videos."""
 
@@ -140,3 +141,25 @@ class VideoForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'placeholder': 'Enter video description'}),
             'video_file': forms.ClearableFileInput(attrs={'accept': 'video/*'}),
         }
+
+class ChangePasswordForm(forms.Form):
+    new_password = forms.CharField(
+        widget=forms.PasswordInput,
+        label="Nova senha"
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput,
+        label="Confirme a nova senha"
+    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password = cleaned_data.get("new_password")
+        confirm_password = cleaned_data.get("confirm_password")
+
+        if new_password != confirm_password:
+            raise forms.ValidationError("As senhas não coincidem.")
+        return cleaned_data
+
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(label="Digite seu email", max_length=254)

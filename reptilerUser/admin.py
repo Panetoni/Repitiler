@@ -28,7 +28,6 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 
-
 @admin.register(ReptilerUser)
 class ReptilerUserAdmin(admin.ModelAdmin):
     form = ReptilerUserAdminForm

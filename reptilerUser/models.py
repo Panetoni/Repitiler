@@ -4,13 +4,14 @@ from django.contrib.auth.models import User #type: ignore
 from django.db import models #type: ignore
 from django.contrib.auth.models import User #type: ignore
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 
 #----------------------------------- Usuário ---------------------------------------------------
 
 
 class ReptilerUser(models.Model):
-    """Extensão do modelo User com dados adicionais."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='reptiler_user')
 
     @property
@@ -26,6 +27,21 @@ class ReptilerUser(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def change_password(self, new_password: str):
+        """
+        Altera a senha do usuário após validar com os validadores do Django.
+        Retorna uma tupla: (sucesso: bool, mensagem: str ou lista de erros)
+        """
+        try:
+            validate_password(new_password, user=self.user)
+        except ValidationError as e:
+            return False, e.messages
+
+        self.user.set_password(new_password)
+        self.user.save()
+        return True, "Senha alterada com sucesso!"
+
 
 #----------------------------------- Fim Usuário ------------------------------------------------
 

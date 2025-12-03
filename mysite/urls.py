@@ -23,10 +23,12 @@ from django.conf.urls.static import static # type: ignore
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('allauth.urls')), # URLs do allauth para autenticação
+    path('accounts/', include('allauth.urls')), # URLs do allauth para autenticação 
     path('', include('reptilerUser.urls')),  # URLs
     path('api-auth/', include('rest_framework.urls')),  # URLs para autenticação do Django REST Framework
+    
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

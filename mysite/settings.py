@@ -68,7 +68,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',  # Gerencia mensagens entre views/templates
     'django.middleware.clickjacking.XFrameOptionsMiddleware', # Proteção contra clickjacking (iframe)
     
-    'allauth.account.middleware.AccountMiddleware'           # Middleware para integração do allauth
+    'allauth.account.middleware.AccountMiddleware',           # Middleware para integração do allauth
+    'corsheaders.middleware.CorsMiddleware',  # App para lidar com CORS
+
 ]
 
 
@@ -183,17 +185,34 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-
+# Configurações do django-allauth
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['username*', 'email', 'password1*', 'password2*']
-
 SOCIALACCOUNT_QUERY_EMAIL = True
 
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
-LOGIN_REDIRECT_URL = 'dashboard'  # Redireciona para a página inicial após o login
-ACCOUNT_LOGOUT_REDIRECT_URL = 'login'  # Redireciona para a página
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'reptilerUser' / 'static',
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+LANGUAGE_CODE = 'pt-br'
+
+USE_I18N = True
+
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
 
 
+# URLs de redirecionamento
+LOGIN_URL = '/login/'  # sua URL de login personalizada
+LOGIN_REDIRECT_URL = '/redirect-to-angular/'  # página para redirecionar após login
+ACCOUNT_LOGOUT_REDIRECT_URL = '/login/'  # página para redirecionar após logout
 
 # Rest Framework settings
 
@@ -204,3 +223,25 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# ================= Emails =================
+# Configuração SMTP para produção
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'noreply.repitiler@gmail.com'
+EMAIL_HOST_PASSWORD = 'btkfhlbrgfxrfabg' 
+DEFAULT_FROM_EMAIL = 'noreply@repitiler.com'
+
+
+
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+]
+
+#SESSION_COOKIE_SAMESITE = 'None'
+#SESSION_COOKIE_SECURE = False #Mudar para True em produção
+# =========================================

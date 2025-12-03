@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Nome Público</title>
+</head>
+<body>
+<h1>Alterar Nome Público</h1>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}  <!-- Renderiza o campo com label, input e erros automaticamente -->
+  <button type="submit">Salvar Nome Público</button>
+</form>
+
+<p><a href="{% url 'dashboard' %}">⬅ Voltar para Dashboard</a></p>
+</body>
+</html>
